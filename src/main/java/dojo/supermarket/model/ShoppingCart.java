@@ -1,10 +1,6 @@
 package dojo.supermarket.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ShoppingCart {
 
@@ -33,7 +29,7 @@ public class ShoppingCart {
     }
 
     void handleOffers(Receipt receipt, Map<Product, Offer> offers, SupermarketCatalog catalog) {
-        for (Product p: productQuantities().keySet()) {
+        for (Product p : productQuantities().keySet()) {
             double quantity = productQuantities.get(p);
             if (offers.containsKey(p)) {
                 Offer offer = offers.get(p);
@@ -52,7 +48,8 @@ public class ShoppingCart {
                         discount = new Discount(p, "2 for " + offer.argument, -discountN);
                     }
 
-                } if (offer.offerType == SpecialOfferType.FIVE_FOR_AMOUNT) {
+                }
+                if (offer.offerType == SpecialOfferType.FIVE_FOR_AMOUNT) {
                     x = 5;
                 }
                 int numberOfXs = quantityAsInt / x;
